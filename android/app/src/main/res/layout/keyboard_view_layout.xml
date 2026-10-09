@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard_root_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg_dark">
+
+    <!-- Top Suggestion Strip & Quick Action Bar -->
+    <LinearLayout
+        android:id="@+id/toolbar_and_suggestion_strip"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/suggestion_strip_bg_dark"
+        android:paddingHorizontal="4dp">
+
+        <!-- Quick Access Action Buttons -->
+        <ImageButton
+            android:id="@+id/btn_action_language"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Language Mode"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:tint="@color/key_text_dark" />
+
+        <ImageButton
+            android:id="@+id/btn_action_mic"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Voice Typing"
+            android:src="@android:drawable/ic_btn_speak_now"
+            android:tint="@color/primary_emerald" />
+
+        <ImageButton
+            android:id="@+id/btn_action_clipboard"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Clipboard"
+            android:src="@android:drawable/ic_menu_paste_light"
+            android:tint="@color/key_subtext_dark" />
+
+        <!-- Horizontal Scrollable Suggestions Container -->
+        <HorizontalScrollView
+            android:id="@+id/suggestion_scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/suggestion_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp" />
+        </HorizontalScrollView>
+
+        <ImageButton
+            android:id="@+id/btn_action_settings"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Settings"
+            android:src="@android:drawable/ic_menu_manage"
+            android:tint="@color/key_subtext_dark" />
+    </LinearLayout>
+
+    <!-- Recording Indicator Bar (Visible when voice recognition active) -->
+    <LinearLayout
+        android:id="@+id/voice_recording_bar"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/status_recording"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_voice_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listening (Bengali)... Speak now"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Main Keyboard Keys Container (Populated dynamically by KeyboardView/Layout) -->
+    <LinearLayout
+        android:id="@+id/keyboard_keys_container"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:padding="3dp" />
+
+</LinearLayout>

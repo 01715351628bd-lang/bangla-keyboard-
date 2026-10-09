@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="com.kothapro.banglakeyboard.SettingsActivity"
+    android:isDefault="false"
+    android:supportsSwitchingToNextInputMethod="true">
+
+    <!-- Bengali Phonetic Subtype -->
+    <subtype
+        android:label="@string/subtype_bengali_phonetic"
+        android:imeSubtypeLocale="bn_BD"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayout=Phonetic"
+        android:isAuxiliary="false"
+        android:overridesImplicitlyEnabledSubtype="true" />
+
+    <!-- English (US) Subtype -->
+    <subtype
+        android:label="@string/subtype_english_us"
+        android:imeSubtypeLocale="en_US"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayout=QWERTY"
+        android:isAuxiliary="false"
+        android:overridesImplicitlyEnabledSubtype="false" />
+
+</input-method>

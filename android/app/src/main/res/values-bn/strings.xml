@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">কথা প্রো বাংলা কীবোর্ড</string>
+    <string name="ime_service_label">কথা প্রো বাংলা কীবোর্ড</string>
+    <string name="subtype_bengali_phonetic">বাংলা (ধ্বনিভিত্তিক)</string>
+    <string name="subtype_english_us">ইংরেজি (US)</string>
+    <string name="settings_title">কীবোর্ড সেটিংস</string>
+    <string name="onboarding_title">কথা প্রো সেটআপ</string>
+    <string name="onboarding_subtitle">দ্রুত ও নিরাপদ বাংলা ও ইংরেজি টাইপিং</string>
+
+    <!-- Setup Steps -->
+    <string name="step_enable_title">ধাপ ১: কীবোর্ড চালু করুন</string>
+    <string name="step_enable_desc">অ্যান্ড্রয়েড সিস্টেম সেটিংসে কথা প্রো চালু করুন</string>
+    <string name="btn_enable_ime">সেটিংসে সক্রিয় করুন</string>
+
+    <string name="step_select_title">ধাপ ২: কীবোর্ড নির্বাচন করুন</string>
+    <string name="step_select_desc">টাইপ করার জন্য ডিফল্ট কীবোর্ড হিসেবে কথা প্রো বেছে নিন</string>
+    <string name="btn_select_ime">কীবোর্ড পরিবর্তন করুন</string>
+
+    <string name="step_ready_title">ধাপ ৩: টাইপ করার জন্য প্রস্তুত!</string>
+    <string name="step_ready_desc">ধ্বনিভিত্তিক বাংলা টাইপ করুন: ami লিখলে আমি, amar লিখলে আমার হবে</string>
+    <string name="test_input_hint">এখানে টাইপ করে পরীক্ষা করুন...</string>
+
+    <!-- Preferences -->
+    <string name="pref_cat_typing">টাইপিং ও ইঞ্জিন</string>
+    <string name="pref_autocorrect">স্বয়ংক্রিয় সংশোধন (Autocorrect)</string>
+    <string name="pref_autocorrect_summary">সাধারণ ভুলের স্বয়ংক্রিয় সংশোধন</string>
+    <string name="pref_suggestions">স্মার্ট শব্দ পরামর্শ</string>
+    <string name="pref_suggestions_summary">কীবোর্ডের উপরে প্রস্তাবিত শব্দ প্রদর্শন</string>
+    <string name="pref_default_mode">ডিফল্ট ভাষা মোড</string>
+
+    <string name="pref_cat_appearance">থিম ও প্রতিক্রিয়া</string>
+    <string name="pref_theme">কীবোর্ড থিম</string>
+    <string name="pref_keyboard_height">কীবোর্ড উচ্চতা</string>
+    <string name="pref_keypress_vibration">কীপ্রেস কম্পন (Vibration)</string>
+    <string name="pref_keypress_sound">কীপ্রেস শব্দ (Sound)</string>
+
+    <string name="pref_cat_tools">টুলস ও ফিচার</string>
+    <string name="pref_bijoy_converter">বিজয় অ্যানসি ↔ ইউনিকোড রূপান্তরকারী</string>
+    <string name="pref_ocr_reader">বাংলা ওসিআর (ছবি থেকে টেক্সট)</string>
+    <string name="pref_clipboard_history">স্থানীয় ক্লিপবোর্ড ম্যানেজার</string>
+
+    <string name="pref_cat_privacy">নিরাপত্তা ও গোপনীয়তা</string>
+    <string name="pref_privacy_statement">১০০% অফলাইন ও সম্পূর্ণ নিরাপদ</string>
+    <string name="pref_privacy_desc">কথা প্রো আপনার কোনো তথ্য বা কীস্ট্রোক ইন্টারনেটে পাঠায় না। সমস্ত প্রসেসিং আপনার ফোনেই সম্পন্ন হয়।</string>
+    <string name="pref_clear_learned">শেখা শব্দ মুছুন</string>
+    <string name="pref_clear_clipboard">ক্লিপবোর্ড ইতিহাস মুছুন</string>
+
+    <string name="perm_record_audio_rationale">ভয়েস টাইপিংয়ের জন্য মাইক্রোফোন অনুমতি প্রয়োজন।</string>
+</resources>

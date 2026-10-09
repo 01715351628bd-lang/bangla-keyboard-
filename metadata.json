@@ -1,0 +1,6 @@
+{
+  "name": "Kotha Pro Bangla Keyboard - Android IME & Studio",
+  "description": "Production-grade Native Android Bengali Keyboard IME with Phonetic Engine, Bijoy ANSI-Unicode Converter, OCR, Voice Typing, and APK Build Pipeline.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
