@@ -175,13 +175,13 @@ class KothaKeyboardService : InputMethodService() {
     }
 
     private fun handleCharacterInput(char: String) {
-        if (keyboardState.currentMode.isBengali && !keyboardState.isSensitiveField) {
+        if (keyboardState.currentMode == LanguageMode.BENGALI_PHONETIC && !keyboardState.isSensitiveField) {
             // Incremental Bengali phonetic typing
             val bengaliPreview = transliterationBuffer.append(char)
             inputEditor.setComposingText(bengaliPreview)
             updateSuggestions(transliterationBuffer.rawLatin, bengaliPreview)
         } else {
-            // Direct commit (English / Symbols / Numbers / Password field)
+            // Direct commit (Bengali Bijoy Typewriter / English / Symbols / Numbers)
             inputEditor.commitText(char)
         }
     }
@@ -262,10 +262,10 @@ class KothaKeyboardService : InputMethodService() {
 
     private fun toggleLanguageMode() {
         commitPendingTransliteration()
-        keyboardState.currentMode = if (keyboardState.currentMode == LanguageMode.BENGALI_PHONETIC) {
-            LanguageMode.ENGLISH
-        } else {
-            LanguageMode.BENGALI_PHONETIC
+        keyboardState.currentMode = when (keyboardState.currentMode) {
+            LanguageMode.BENGALI_PHONETIC -> LanguageMode.BENGALI_BIJOY
+            LanguageMode.BENGALI_BIJOY -> LanguageMode.ENGLISH
+            else -> LanguageMode.BENGALI_PHONETIC
         }
         btnActionLanguage?.contentDescription = keyboardState.currentMode.displayName
         refreshKeyboardLayout()
@@ -299,6 +299,13 @@ class KothaKeyboardService : InputMethodService() {
             LanguageMode.BENGALI_PHONETIC -> {
                 keyboardView?.renderLayout(
                     rows = KeyboardLayout.BENGALI_PHONETIC_ROWS,
+                    state = keyboardState,
+                    numberRow = KeyboardLayout.BENGALI_NUMBER_ROW
+                )
+            }
+            LanguageMode.BENGALI_BIJOY -> {
+                keyboardView?.renderLayout(
+                    rows = KeyboardLayout.BENGALI_BIJOY_ROWS,
                     state = keyboardState,
                     numberRow = KeyboardLayout.BENGALI_NUMBER_ROW
                 )

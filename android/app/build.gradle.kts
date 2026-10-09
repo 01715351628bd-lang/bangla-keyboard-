@@ -62,8 +62,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.runtime)
 
-    // Optional on-device Bengali OCR (Tesseract / Mobile Vision)
-    implementation(libs.tess.two)
+    // On-device Bengali OCR (Tesseract / Mobile Vision)
+    compileOnly(libs.tess.two)
 
     // Testing
     testImplementation(libs.junit)

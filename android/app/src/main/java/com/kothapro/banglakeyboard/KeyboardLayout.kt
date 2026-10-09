@@ -96,6 +96,51 @@ object KeyboardLayout {
         )
     )
 
+    // Bengali Direct Bijoy (Typewriter) Layout Rows
+    val BENGALI_BIJOY_ROWS = listOf(
+        listOf(
+            KeyModel("ঙ", "ং", "q"),
+            KeyModel("য", "য়", "w"),
+            KeyModel("ড", "ঢ", "e"),
+            KeyModel("প", "ফ", "r"),
+            KeyModel("ট", "ঠ", "t"),
+            KeyModel("চ", "ছ", "y"),
+            KeyModel("জ", "ঝ", "u"),
+            KeyModel("হ", "ঞ", "i"),
+            KeyModel("গ", "ঘ", "o"),
+            KeyModel("ড়", "ঢ়", "p")
+        ),
+        listOf(
+            KeyModel("ৃ", "র্", "a"),
+            KeyModel("ু", "ূ", "s"),
+            KeyModel("ি", "ী", "d"),
+            KeyModel("া", "অ", "f"),
+            KeyModel("্", "।", "g"),
+            KeyModel("ব", "ভ", "h"),
+            KeyModel("ক", "খ", "j"),
+            KeyModel("ত", "থ", "k"),
+            KeyModel("দ", "ধ", "l")
+        ),
+        listOf(
+            KeyModel("⇧", "⇪", "", CODE_SHIFT, isSpecial = true, weight = 1.3f),
+            KeyModel("্র", "্য", "z"),
+            KeyModel("ো", "ৌ", "x"),
+            KeyModel("ে", "ৈ", "c"),
+            KeyModel("র", "ল", "v"),
+            KeyModel("ন", "ণ", "b"),
+            KeyModel("স", "ষ", "n"),
+            KeyModel("ম", "শ", "m"),
+            KeyModel("⌫", "⌫", "", CODE_BACKSPACE, isSpecial = true, weight = 1.3f)
+        ),
+        listOf(
+            KeyModel("?123", "?123", "", CODE_MODE_SWITCH, isSpecial = true, weight = 1.3f),
+            KeyModel("।", "।", "।", weight = 0.9f),
+            KeyModel(" ", " ", "", CODE_SPACE, weight = 3.6f),
+            KeyModel(",", ",", ",", weight = 0.9f),
+            KeyModel("↵", "↵", "", CODE_ENTER, isSpecial = true, weight = 1.3f)
+        )
+    )
+
     // English QWERTY Rows
     val ENGLISH_ROWS = listOf(
         listOf(

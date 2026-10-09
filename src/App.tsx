@@ -159,7 +159,7 @@ export default function App() {
               }`}
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>APK বিল্ড ও ডাউনলোড গাইড</span>
+              <span>APK ডাউনলোড হাব (Direct APK)</span>
             </button>
           </nav>
         </div>

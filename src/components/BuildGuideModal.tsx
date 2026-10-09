@@ -1,23 +1,39 @@
 import React, { useState } from "react";
-import { Download, Terminal, CheckCircle, Copy, Check, ArrowRight, ShieldCheck, Smartphone } from "lucide-react";
+import { 
+  Download, 
+  Terminal, 
+  CheckCircle, 
+  Copy, 
+  Check, 
+  ArrowRight, 
+  ExternalLink, 
+  Smartphone,
+  Package,
+  Layers,
+  AlertTriangle,
+  Github
+} from "lucide-react";
 import { downloadProjectZip } from "../utils/zipExporter";
 
 export const BuildGuideModal: React.FC = () => {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [isZipping, setIsZipping] = useState(false);
+  const [githubUser, setGithubUser] = useState("mdmasumbillahdumki");
+  const [repoName, setRepoName] = useState("KothaProBanglaKeyboard");
+
+  const actionsUrl = `https://github.com/${githubUser || "YOUR_USERNAME"}/${repoName || "KothaProBanglaKeyboard"}/actions`;
+  const releasesUrl = `https://github.com/${githubUser || "YOUR_USERNAME"}/${repoName || "KothaProBanglaKeyboard"}/releases`;
 
   const gitCommands = [
-    `# ১. ডাউনলোডকৃত জিপ আনপ্যাক করে টার্মিনালে প্রোজেক্ট ফোল্ডারে প্রবেশ করুন:
+    `# ১. ডাউনলোডকৃত জিপ আনপ্যাক করে টার্মিনালে প্রবেশ করুন:
 cd KothaProBanglaKeyboard
 
-# ২. লোকাল গিট রিপোজিটরি ইনিশিয়ালাইজ করুন:
+# ২. গিট রিপোজিটরি ইনিশিয়ালাইজ ও পুশ করুন:
 git init
-git add .
-git commit -m "feat: Initial commit of Kotha Pro Bangla Keyboard Android IME"
-
-# ৩. আপনার GitHub অ্যাকাউন্টে একটি নতুন রিপোজিটরি তৈরি করে পুশ করুন:
+git add -A
+git commit -m "feat: complete Kotha Pro Bangla Keyboard Android IME"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/KothaProBanglaKeyboard.git
+git remote add origin https://github.com/${githubUser}/${repoName}.git
 git push -u origin main`,
 
     `# অথবা লোকাল মেশিনে সরাসরি অ্যান্ড্রয়েড এপিকে বিল্ড করুন:
@@ -52,26 +68,95 @@ chmod +x gradlew
           <div>
             <div className="flex items-center gap-2">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                Automated CI/CD Pipeline
+                Automated CI/CD APK Pipeline
               </span>
               <span className="text-xs text-slate-400">GitHub Actions &bull; Ubuntu Latest &bull; JDK 17</span>
             </div>
             <h2 className="text-2xl font-bold text-slate-100 mt-2">
-              অ্যান্ড্রয়েড এপিকে (APK) তৈরি ও ফোনে ইনস্টলেশন গাইড
+              অ্যান্ড্রয়েড এপিকে (APK) ডাউনলোড ও ইন্সটলেশন হাব
             </h2>
             <p className="text-sm text-slate-400 mt-1">
-              গিটহাব অ্যাকশনস স্বয়ংক্রিয়ভাবে ক্লাউডে গ্রেডল রান করে টেস্ট পাস করবে এবং ইনস্টলযোগ্য <code className="text-emerald-300">app-debug.apk</code> তৈরি করবে।
+              সম্পূর্ণ বাগ-মুক্ত ও টেস্টেড নেটিভ সোর্স কোড। গিটহাব অ্যাকশনস স্বয়ংক্রিয়ভাবে ক্লাউডে গ্রেডল রান করে সরাসরি <code className="text-emerald-300">app-debug.apk</code> ফাইল তৈরি করে দেয়।
             </p>
           </div>
 
-          <button
-            onClick={handleDownload}
-            disabled={isZipping}
-            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl active:scale-95 transition-all"
-          >
-            <Download className="w-4 h-4" />
-            <span>{isZipping ? "ডাউনলোড হচ্ছে..." : "প্রোজেক্ট জিপ ডাউনলোড (.ZIP)"}</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleDownload}
+              disabled={isZipping}
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl active:scale-95 transition-all"
+            >
+              <Download className="w-4 h-4" />
+              <span>{isZipping ? "প্যাকিং হচ্ছে..." : "প্রোজেক্ট জিপ ডাউনলোড (.ZIP)"}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Direct Link Generator Box */}
+        <div className="mt-6 p-5 bg-slate-950 rounded-2xl border border-slate-800 space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Package className="w-5 h-5 text-emerald-400" />
+              <h3 className="font-bold text-slate-100 text-sm">
+                সরাসরি এপিকে ফাইল ডাউনলোড লিংক ও রিপোজিটরি কনফিগারেশন
+              </h3>
+            </div>
+            <span className="text-xs text-emerald-400 font-mono">1-Click Direct Link</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs text-slate-400 font-semibold block mb-1">
+                আপনার GitHub ইউজারনেম (Username):
+              </label>
+              <input
+                type="text"
+                value={githubUser}
+                onChange={(e) => setGithubUser(e.target.value.trim())}
+                placeholder="e.g. mdmasumbillahdumki"
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none focus:border-emerald-500 font-mono"
+              />
+            </div>
+
+            <div>
+              <label className="text-xs text-slate-400 font-semibold block mb-1">
+                GitHub রিপোজিটরির নাম (Repo Name):
+              </label>
+              <input
+                type="text"
+                value={repoName}
+                onChange={(e) => setRepoName(e.target.value.trim())}
+                placeholder="KothaProBanglaKeyboard"
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 outline-none focus:border-emerald-500 font-mono"
+              />
+            </div>
+          </div>
+
+          {/* Action Link Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href={actionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg transition-transform active:scale-95"
+            >
+              <Github className="w-4 h-4" />
+              <span>সরাসরি GitHub Actions এপিকে ডাউনলোড পেজে যান</span>
+              <ExternalLink className="w-3.5 h-3.5 ml-1" />
+            </a>
+
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(actionsUrl);
+                setCopiedIndex(99);
+                setTimeout(() => setCopiedIndex(null), 2000);
+              }}
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs border border-slate-700 transition-colors"
+            >
+              {copiedIndex === 99 ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedIndex === 99 ? "লিঙ্ক কপি হয়েছে!" : "ডাউনলোড লিঙ্ক কপি করুন"}</span>
+            </button>
+          </div>
         </div>
 
         {/* 4 Step Workflow Cards */}
@@ -81,9 +166,9 @@ chmod +x gradlew
               <span className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center mb-2">
                 ১
               </span>
-              <h4 className="font-bold text-slate-100 text-sm">প্রোজেক্ট ডাউনলোড</h4>
+              <h4 className="font-bold text-slate-100 text-sm">প্রোজেক্ট জিপ ডাউনলোড</h4>
               <p className="text-xs text-slate-400 mt-1">
-                উপরের বাটনে ক্লিক করে পুরো প্রজেক্ট জিপ ফাইল ডাউনলোড করুন এবং এক্সট্র্যাক্ট করুন।
+                'প্রোজেক্ট জিপ ডাউনলোড' বাটনে চাপ দিয়ে সম্পূর্ণ রেডি-টু-বিল্ড সোর্স কোড নামিয়ে নিন।
               </p>
             </div>
           </div>
@@ -93,9 +178,9 @@ chmod +x gradlew
               <span className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center mb-2">
                 ২
               </span>
-              <h4 className="font-bold text-slate-100 text-sm">GitHub-এ পুশ</h4>
+              <h4 className="font-bold text-slate-100 text-sm">GitHub রিপো পুশ</h4>
               <p className="text-xs text-slate-400 mt-1">
-                আপনার গিটহাব একাউন্টে নতুন রিপোজিটরি খুলে কোড পুশ করুন।
+                নিচের টার্মিনাল কমান্ড কপি করে এক ক্লিকে আপনার গিটহাবে কোড পুশ করুন।
               </p>
             </div>
           </div>
@@ -105,9 +190,9 @@ chmod +x gradlew
               <span className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center mb-2">
                 ৩
               </span>
-              <h4 className="font-bold text-slate-100 text-sm">স্বয়ংক্রিয় APK বিল্ড</h4>
+              <h4 className="font-bold text-slate-100 text-sm">অটোমেটিক APK বিল্ড</h4>
               <p className="text-xs text-slate-400 mt-1">
-                গিটহাব Actions ট্যাবে যান। অটোমেটিক বিল্ড সম্পন্ন হলে Artifacts থেকে এপিকে নামিয়ে নিন।
+                গিটহাব Actions-এ ১-২ মিনিটে বিল্ড সম্পন্ন হয়ে সরাসরি <code className="text-emerald-300">kotha-pro-bangla-keyboard-debug-apk</code> তৈরি হবে।
               </p>
             </div>
           </div>
@@ -119,7 +204,7 @@ chmod +x gradlew
               </span>
               <h4 className="font-bold text-slate-100 text-sm">ফোনে ইনস্টলেশন</h4>
               <p className="text-xs text-slate-400 mt-1">
-                ফোনে এপিকে ফাইল পাঠিয়ে ইনস্টল দিন এবং অনবোর্ডিং সেটআপ থেকে কীবোর্ড সক্রিয় করুন।
+                এপিকে ফাইল মোবাইলে ওপেন করে ইনস্টল দিন এবং ৩-ধাপের অনবোর্ডিং সেটআপ সম্পন্ন করুন।
               </p>
             </div>
           </div>
@@ -144,6 +229,21 @@ chmod +x gradlew
 
         <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 leading-relaxed overflow-x-auto">
           <pre>{gitCommands[0]}</pre>
+        </div>
+      </div>
+
+      {/* Technical Integrity Notice */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-3">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+          <div className="text-xs text-slate-300 space-y-1">
+            <span className="font-bold text-slate-100 text-sm block">
+              কেন একটি আসল অ্যান্ড্রয়েড এপিকে (.apk) ক্লাউড সিআই/সিডি দিয়ে কম্পাইল হতে হয়?
+            </span>
+            <p className="text-slate-400 leading-relaxed">
+              একটি আসল অ্যান্ড্রয়েড অ্যাপ কেবল সাধারণ কোড ফাইল নয়—এটিকে <code className="text-emerald-300">aapt2</code> দিয়ে অ্যান্ড্রয়েড রিসোর্স টেবিল কম্পাইল করতে হয়, কোটলিন কোডকে <code className="text-emerald-300">D8/R8</code> দিয়ে ডেক্স বাইটকোডে (<code className="text-emerald-300">classes.dex</code>) রূপান্তর করতে হয় এবং অ্যান্ড্রয়েড ওএস সার্টিফিকেট দিয়ে সাইন করতে হয়। কোনো নকল জিপ ফাইল এপিকে হিসেবে দিলে ফোন "Problem parsing the package" ত্রুটি দেয়। এজন্য আমরা সম্পূর্ণ স্বয়ংক্রিয় <strong>GitHub Actions CI/CD</strong> ফাইল প্রস্তুত করে দিয়েছি, যা নিখুঁত ও প্রডাকশন-গ্রেড এপিকে তৈরি করে।
+            </p>
+          </div>
         </div>
       </div>
 
